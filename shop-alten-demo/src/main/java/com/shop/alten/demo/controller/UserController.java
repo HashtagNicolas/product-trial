@@ -5,6 +5,7 @@ import com.shop.alten.demo.dto.AuthResponseDto;
 import com.shop.alten.demo.dto.UserDto;
 import com.shop.alten.demo.exception.UserAlreadyExistsException;
 import com.shop.alten.demo.service.UserService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
@@ -31,7 +32,7 @@ public class UserController {
     private final AuthenticationManager authenticationManager;
 
     @PostMapping("/register")
-    public ResponseEntity<UserDto> registerUser(@RequestBody UserDto userDto) {
+    public ResponseEntity<UserDto> registerUser(@RequestBody @Valid UserDto userDto) {
         if (userService.findByEmail(userDto.getEmail()) != null) {
             throw new UserAlreadyExistsException("User already exists - Email : " + userDto.getEmail());
         }
@@ -43,7 +44,7 @@ public class UserController {
     }
 
     @PostMapping("/login")
-    public ResponseEntity<AuthResponseDto> login(@RequestBody UserDto userDto) {
+    public ResponseEntity<AuthResponseDto> login(@RequestBody @Valid UserDto userDto) {
         try {
             Authentication authentication = authenticationManager
                     .authenticate(new UsernamePasswordAuthenticationToken(userDto.getEmail(), userDto.getPassword()));

@@ -36,13 +36,28 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public ProductDto createProduct(ProductDto productDto) {
+
+        handleIllegalValueProduct(productDto);
+
         Product product = productMapper.toEntity(productDto);
         Product saved = productRepository.save(product);
         return productMapper.toDTO(saved);
     }
 
+    private void handleIllegalValueProduct(ProductDto productDto) {
+        if (productDto.getQuantity() < 0) {
+            throw new IllegalArgumentException("La quantité ne peut pas être négative.");
+        }
+        if (productDto.getPrice() < 0) {
+            throw new IllegalArgumentException("Le prix ne peut pas être négatif.");
+        }
+    }
+
     @Override
     public ProductDto updateProduct(Long id, ProductDto newProductDto) {
+
+        handleIllegalValueProduct(newProductDto);
+
         return productRepository.findById(id).map(existing -> {
             existing.setName(newProductDto.getName());
             existing.setDescription(newProductDto.getDescription());
