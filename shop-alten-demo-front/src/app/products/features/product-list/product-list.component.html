@@ -1,0 +1,70 @@
+<h1 class="title">Liste des produits</h1>
+
+<p-button label="Créer produit" (onClick)="onCreate()" class="create-btn" />
+
+<p-dataView #dv [value]="products()">
+  <ng-template pTemplate="list" let-products>
+    @for (product of products; track product) {
+      <p-card class="product-card">
+        <div class="product-grid">
+          <div class="product-image-wrap">
+            <img [src]="product.image || 'assets/images/placeholder.png'" [alt]="product.name" class="product-image" />
+          </div>
+
+          <div class="product-info">
+
+            <div class="product-header">
+              <span class="product-category">{{ product.category }}</span>
+              <h3 class="product-name">{{ product.name }}</h3>
+            </div>
+
+            <p class="product-description">{{ product.description }}</p>
+
+            <div class="product-meta">
+              <div class="product-meta-grid">
+                <div class="meta-item">
+                  <strong>Prix :</strong> {{ product.price | currency:'EUR':'symbol':'1.2-2':'fr' }}
+                </div>
+                <div class="meta-item">
+                  <strong>Quantité :</strong> {{ product.quantity }}
+                  <span
+                    class="inventory-badge"
+                    [ngClass]="{
+                      instock: product.inventoryStatus === 'INSTOCK',
+                      lowstock: product.inventoryStatus === 'LOWSTOCK',
+                      outofstock: product.inventoryStatus === 'OUTOFSTOCK'
+                    }"
+                  >
+                    {{ product.inventoryStatus }}
+                  </span>
+                </div>
+                <div class="meta-item"><strong>Réf :</strong> {{ product.internalReference }}</div>
+                <div class="meta-item"><strong>id :</strong> {{ product.shellId }}</div>
+
+                <div class="meta-item meta-rating" *ngIf="product.rating && product.rating > 0">
+                  <strong>Note :</strong>
+                  <span class="stars">
+                    <span *ngFor="let s of [].constructor(product.rating)">★</span>
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <ng-template pTemplate="footer">
+        <div class="product-footer">
+          <p-button 
+            *ngIf="product.inventoryStatus !== 'OUTOFSTOCK'" label="Ajouter au panier" severity="info" (onClick)="onAddToCart(product)" />
+            <p-button label="Modifier" severity="secondary" (onClick)="onUpdate(product)" />
+            <p-button label="Supprimer" severity="danger" (onClick)="onDelete(product)" />
+          </div>
+        </ng-template>
+      </p-card>
+    }
+  </ng-template>
+</p-dataView>
+
+<p-dialog [(visible)]="isDialogVisible" [style]="{ width: '50vw' }" header="Ajout/Edition produit">
+  <app-product-form [product]="editedProduct()" (save)="onSave($event)" (cancel)="onCancel()" />
+</p-dialog>

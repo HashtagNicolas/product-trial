@@ -1,0 +1,45 @@
+<div class="cart-header flex justify-between items-center mb-3">
+  <h2 class="m-0 text-lg font-semibold">Mon Panier ({{ totalCount() }} articles)</h2>
+  <button 
+    pButton 
+    label="Vider" 
+    (click)="clear()" 
+    class="p-button-danger p-button-sm px-2 py-1 text-sm"
+  ></button>
+</div>
+
+<ul class="cart-items list-none p-0">
+  <li *ngFor="let item of items()" class="flex gap-4 p-2 border-b border-gray-200 items-center">
+    
+    <div class="product-image-wrap w-20 h-20 flex-shrink-0">
+      <img 
+        [src]="item.product.image || 'assets/images/placeholder.png'" 
+        [alt]="item.product.name"
+        class="w-full h-full object-cover rounded-md shadow-sm"
+      />
+    </div>
+
+    <div class="product-info flex-1">
+      <div class="product-header flex flex-col">
+        <span class="product-category text-xs text-gray-500">{{ item.product.category }}</span>
+        <h3 class="product-name text-sm font-semibold">{{ item.product.name }}</h3>
+      </div>
+
+      <p class="product-description text-xs text-gray-600 mt-1">
+        {{ item.product.description }}
+      </p>
+
+      <div class="product-meta mt-1 flex gap-3 items-center text-xs">
+        <div><strong>Prix :</strong> {{ item.product.price | currency:'EUR' }}</div>
+        <div><strong>Quantité :</strong> {{ item.quantity }}</div>
+      </div>
+    </div>
+
+    <button 
+      pButton 
+      label="Supprimer" 
+      (click)="remove(item.product.id)" 
+      class="p-button-danger p-button-sm px-2 py-1 text-xs flex-shrink-0"
+    ></button>
+  </li>
+</ul>

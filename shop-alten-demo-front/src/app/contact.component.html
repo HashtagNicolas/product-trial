@@ -1,0 +1,21 @@
+<form [formGroup]="contactForm" (ngSubmit)="onSubmit()" class="contact-form">
+  <div class="field">
+    <label for="email">Email</label>
+    <input id="email" pInputText type="email" formControlName="email" />
+    <small class="p-error" *ngIf="email?.invalid && email?.touched">
+      Email valide obligatoire
+    </small>
+  </div>
+
+  <div class="field">
+    <label for="message">Message</label>
+    <textarea id="message" pInputTextarea rows="5" formControlName="message"></textarea>
+    <small class="p-error" *ngIf="message?.invalid && message?.touched">
+      Message requis (max 300 caractères)
+    </small>
+  </div>
+
+  <button pButton type="submit" label="Envoyer" [disabled]="contactForm.invalid"></button>
+</form>
+
+<p-toast></p-toast>
