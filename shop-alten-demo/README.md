@@ -4,6 +4,10 @@ Le projet back-end est un projet java réalisé avec springboot et une base de d
 # swagger
 http://localhost:8080/swagger-ui/index.html
 
+# postman api collection
+la collection postman de l'api Shop Alten demo se trouve à la racine du projet
+=> shop-alten-demo/Shop alten api.postman_collection.json
+
 # 🧪 Stratégie de tests API
 
 Ce document décrit la stratégie de tests fonctionnels 

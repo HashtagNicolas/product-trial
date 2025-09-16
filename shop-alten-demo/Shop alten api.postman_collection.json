@@ -1,0 +1,604 @@
+{
+	"info": {
+		"_postman_id": "b70a88e9-3e08-471c-8dd2-3573e991b692",
+		"name": "Shop alten api",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "7281072"
+	},
+	"item": [
+		{
+			"name": "authentification api",
+			"item": [
+				{
+					"name": "registerUser",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"username\": \"admin\",\r\n  \"firstname\": \"jean\",\r\n  \"email\": \"admin@admin.com\",\r\n  \"password\": \"admin123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/auth/register",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"auth",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "LoginUser",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"admin@admin.com\",\r\n    \"password\": \"admin123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/auth/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "product api private admin",
+			"item": [
+				{
+					"name": "create product",
+					"item": [
+						{
+							"name": "admin create product game 1",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"code\": \"VID999232\",\r\n  \"name\": \"The Legend of Zelda: Breath of the Wild\",\r\n  \"description\": \"Un jeu d'aventure en monde ouvert développé par Nintendo.\",\r\n  \"image\": \"https://example.com/images/zelda-breath-of-the-wild.jpg\",\r\n  \"category\": \"Jeux Vidéo\",\r\n  \"price\": 59.99,\r\n  \"quantity\": 10,\r\n  \"internalReference\": \"ZELDA-BOTW-NSW\",\r\n  \"shellId\": 5,\r\n  \"inventoryStatus\": \"INSTOCK\",\r\n  \"rating\": 5\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/products/admin",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"products",
+										"admin"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "admin create product game 2",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbkBhZG1pbi5jb20iLCJpYXQiOjE3NTc3OTk0MTYsImV4cCI6MTc1NzgwMDMxNn0.goJyTFL_-XzU1imOPbY2RcRH1VNR8rZP7XmzXhFCboE",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"code\": \"VID123\",\r\n  \"name\": \"The Legend of Zelda: Breath of the Wild\",\r\n  \"description\": \"Un jeu d'aventure en monde ouvert développé par Nintendo.\",\r\n  \"image\": \"https://example.com/images/zelda-breath-of-the-wild.jpg\",\r\n  \"category\": \"Jeux Vidéo\",\r\n  \"price\": 59.99,\r\n  \"quantity\": 100,\r\n  \"internalReference\": \"ZELDA-BOTW-NSW\",\r\n  \"shellId\": 5,\r\n  \"inventoryStatus\": \"INSTOCK\",\r\n  \"rating\": 5\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/products/admin",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"products",
+										"admin"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "admin create product game 3",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbkBhZG1pbi5jb20iLCJpYXQiOjE3NTc3OTk0MTYsImV4cCI6MTc1NzgwMDMxNn0.goJyTFL_-XzU1imOPbY2RcRH1VNR8rZP7XmzXhFCboE",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"code\": \"VID789\",\r\n  \"name\": \"Call of Duty: Modern Warfare II\",\r\n  \"description\": \"FPS multijoueur et campagne cinématique développé par Activision.\",\r\n  \"image\": \"https://example.com/images/cod-mw2.jpg\",\r\n  \"category\": \"Jeux Vidéo\",\r\n  \"price\": 74.99,\r\n  \"quantity\": 200,\r\n  \"internalReference\": \"COD-MW2-PC\",\r\n  \"shellId\": 7,\r\n  \"inventoryStatus\": \"INSTOCK\",\r\n  \"rating\": 5\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/products/admin",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"products",
+										"admin"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "admin create product game 4",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbkBhZG1pbi5jb20iLCJpYXQiOjE3NTc3OTk0MTYsImV4cCI6MTc1NzgwMDMxNn0.goJyTFL_-XzU1imOPbY2RcRH1VNR8rZP7XmzXhFCboE",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"code\": \"VID789\",\r\n  \"name\": \"Call of Duty: Modern Warfare II\",\r\n  \"description\": \"FPS multijoueur et campagne cinématique développé par Activision.\",\r\n  \"image\": \"https://example.com/images/cod-mw2.jpg\",\r\n  \"category\": \"Jeux Vidéo\",\r\n  \"price\": 74.99,\r\n  \"quantity\": 200,\r\n  \"internalReference\": \"COD-MW2-PC\",\r\n  \"shellId\": 7,\r\n  \"inventoryStatus\": \"INSTOCK\",\r\n  \"rating\": 5\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/products/admin",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"products",
+										"admin"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "update product",
+					"item": [
+						{
+							"name": "admin update product",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"id\": 3,\r\n  \"code\": \"VID789\",\r\n  \"name\": \"Call of Duty: Modern Warfare II\",\r\n  \"description\": \"FPS multijoueur et campagne cinématique développé par Activision.\",\r\n  \"image\": \"https://example.com/images/cod-mw2.jpg\",\r\n  \"category\": \"Jeux Vidéo\",\r\n  \"price\": 74.99,\r\n  \"quantity\": 0,\r\n  \"internalReference\": \"COD-MW2-PC\",\r\n  \"shellId\": 7,\r\n  \"inventoryStatus\": \"OUTOFSTOCK\",\r\n  \"rating\": 5\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/products/admin/4",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"products",
+										"admin",
+										"4"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "delete product",
+					"item": [
+						{
+							"name": "admin delete product",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbkBhZG1pbi5jb20iLCJpYXQiOjE3NTc4MDAzMzUsImV4cCI6MTc1NzgwMTIzNX0.WtEL-o-US2G0pl-SGajeGrAKts7ec0QVXNnADvNWlCw",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/api/products/admin/6",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"products",
+										"admin",
+										"6"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "product api public",
+			"item": [
+				{
+					"name": "get all products",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/products",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"products"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get product by id",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/products/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"products",
+								"2"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "cart api private",
+			"item": [
+				{
+					"name": "get card by id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/cart/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"cart",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update cart",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbkBhZG1pbi5jb20iLCJpYXQiOjE3NTc4MDU0MTYsImV4cCI6MTc1NzgwNjMxNn0.rdcxr026AosJpPhmnT8HcRnqpBkgGJKo_EJ2ClNg5M0",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"id\": 1,\r\n  \"cartItemDtoList\": [\r\n    {\r\n      \"productId\": 1,\r\n      \"quantity\": 10\r\n    }\r\n  ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/cart/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"cart",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "wishlist api private",
+			"item": [
+				{
+					"name": "get wishlist by id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/wishlist/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"wishlist",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update wishlist",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"id\": 1,\r\n  \"wishlistItemDtoList\": [\r\n    {\r\n      \"productId\": 2\r\n    },\r\n    {\r\n      \"productId\": 3\r\n    }\r\n  ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/wishlist/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"wishlist",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "account api private",
+			"item": [
+				{
+					"name": "get account by email",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/account?email=admin@admin.com",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"account"
+							],
+							"query": [
+								{
+									"key": "email",
+									"value": "admin@admin.com"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "token",
+			"value": ""
+		}
+	]
+}
